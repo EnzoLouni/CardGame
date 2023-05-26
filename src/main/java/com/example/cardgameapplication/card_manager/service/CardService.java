@@ -1,82 +1,63 @@
 package com.example.cardgameapplication.card_manager.service;
 
+import com.example.cardgameapplication.card_manager.dao.CardDao;
 import com.example.cardgameapplication.card_manager.dto.CardDto;
+import com.example.cardgameapplication.card_manager.mapper.CardMapper;
+import com.example.cardgameapplication.card_manager.model.Card;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static java.util.stream.Collectors.toList;
 
 @Validated
 @RequiredArgsConstructor
 @Service
 public class CardService {
 
-    private CardDto cardDto = CardDto.builder()
-            .id(1)
-            .name("name1")
-            .description("description1")
-            .family("family1")
-            .affinity("affinity1")
-            .imgUrl("https://www.google.com/")
-            .smallImgUrl("https://www.google.com/")
-            .energy(10.0)
-            .hp(100.0)
-            .defense(10.0)
-            .attack(5.0)
-            .price(2.0)
-            .build(),
-            cardDto2 = CardDto.builder()
-                    .id(2)
-                    .name("name2")
-                    .description("description2")
-                    .family("family2")
-                    .affinity("affinity2")
-                    .imgUrl("https://www.google.com/")
-                    .smallImgUrl("https://www.google.com/")
-                    .energy(1.0)
-                    .hp(100.0)
-                    .defense(1.0)
-                    .attack(1.0)
-                    .price(0.0)
-                    .build();
-
-    public List<CardDto> list = new ArrayList<>(Arrays.asList(cardDto, cardDto2));
+    private final CardDao cardRepository;
+    private final CardMapper cardMapper;
 
     public CardDto getCard(Integer cardId) {
-        Optional<CardDto> cardDtoById = list.stream().filter(card -> cardId.equals(card.getId())).findFirst();
-        if(cardDtoById.isEmpty()) {
+        Optional<Card> card = cardRepository.findById(cardId);
+        if(card.isEmpty()) {
             throw new ResourceNotFoundException();
         }
-        return cardDtoById.get();
+        return cardMapper.toCardDto(card.get());
     }
 
-    public void setCard(Integer id, CardDto newCardDto) {
-        Integer index = list.indexOf(getCard(id));
-        list.set(index, newCardDto);
+    public void updateCard(Integer id, CardDto newCardDto) {
+        try {
+            getCard(id);
+            newCardDto.setId(id);
+            cardRepository.save(cardMapper.toCard(newCardDto));
+        } catch(Exception e) {
+            throw new ResourceNotFoundException();
+        }
     }
 
     public void deleteCard(Integer cardId) {
-        list.remove(getCard(cardId));
+        try {
+            cardRepository.deleteById(cardId);
+        } catch(Exception e) {
+            throw new ResourceNotFoundException();
+        }
     }
 
-    public void addCard(CardDto card) {
-        list.add(card);
+    public void createCard(CardDto card) {
+        cardRepository.save(cardMapper.toCard(card));
     }
 
     public List<CardDto> getCardsToSell() {
-        return list.stream().filter(card -> card.getPrice() > 0).collect(Collectors.toList());
+        return cardRepository.findSoldCards().stream().map(cardMapper::toCardDto).collect(toList());
     }
 
     public List<CardDto> getCards() {
-        return list;
+        return StreamSupport.stream(cardRepository.findAll().spliterator(),false).map(cardMapper::toCardDto).collect(toList());//  stream().map(cardMapper::toCardDto).collect(toList());
     }
 }

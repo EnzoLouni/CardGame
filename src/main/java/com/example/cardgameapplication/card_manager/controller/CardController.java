@@ -26,7 +26,7 @@ public class CardController {
 
     @PutMapping("/{id}")
     public void setCard(@PathVariable("id") Integer id, @RequestBody @Valid CardDto newCardDto) {
-        cardService.setCard(id, newCardDto);
+        cardService.updateCard(id, newCardDto);
     }
 
     @DeleteMapping("/{id}")
@@ -37,7 +37,7 @@ public class CardController {
     @PostMapping
     public void createCard(@RequestBody @Valid CardDto card)
     {
-        cardService.addCard(card);
+        cardService.createCard(card);
     }
 
     @JsonView(Views.CardView.class)

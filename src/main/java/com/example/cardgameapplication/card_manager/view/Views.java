@@ -4,4 +4,8 @@ public class Views {
     public static class CardView {
 
     }
+
+    public static class UserView {
+
+    }
 }
