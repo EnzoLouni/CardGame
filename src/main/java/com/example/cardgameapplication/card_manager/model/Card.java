@@ -1,5 +1,6 @@
 package com.example.cardgameapplication.card_manager.model;
 
+import com.example.cardgameapplication.user_manager.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "CARD", schema = "card")
+@Table(name = "CARD", schema = "public")
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,6 +41,7 @@ public class Card {
     private Double attack;
     @NotNull
     private Double price;
-    @Column
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

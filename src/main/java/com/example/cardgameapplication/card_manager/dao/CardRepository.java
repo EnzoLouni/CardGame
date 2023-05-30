@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CardDao extends CrudRepository<Card, Integer> {
-    @Query(value = "SELECT c FROM Card c WHERE c.price > 0")
+public interface CardRepository extends CrudRepository<Card, Integer> {
+    @Query(value = "SELECT c FROM Card c WHERE c.user IS NULL")
     List<Card> findSoldCards();
 }

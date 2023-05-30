@@ -1,4 +1,4 @@
-package com.example.cardgameapplication.card_manager.view;
+package com.example.cardgameapplication.view;
 
 public class Views {
     public static class CardView {
@@ -6,6 +6,10 @@ public class Views {
     }
 
     public static class UserView {
+
+    }
+
+    public static class StoreView {
 
     }
 }

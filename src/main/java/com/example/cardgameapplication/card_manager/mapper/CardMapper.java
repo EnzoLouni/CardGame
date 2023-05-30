@@ -2,13 +2,19 @@ package com.example.cardgameapplication.card_manager.mapper;
 
 import com.example.cardgameapplication.card_manager.dto.CardDto;
 import com.example.cardgameapplication.card_manager.model.Card;
+import com.example.cardgameapplication.user_manager.mapper.UserMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.mapstruct.InjectionStrategy.FIELD;
 
 @Mapper(injectionStrategy = FIELD, componentModel = "spring")
-public interface CardMapper {
+public abstract class CardMapper {
+
+    @Autowired
+    protected UserMapper userMapper;
+
     @Mapping(target = "id", source = "card.id")
     @Mapping(target = "name", source = "card.name")
     @Mapping(target = "description", source = "card.description")
@@ -21,8 +27,8 @@ public interface CardMapper {
     @Mapping(target = "defense", source = "card.defense")
     @Mapping(target = "attack", source = "card.attack")
     @Mapping(target = "price", source = "card.price")
-    @Mapping(target = "userDto", expression = "java(null)")
-    CardDto toCardDto(Card card);
+    @Mapping(target = "userDto", expression = "java(userMapper.toUserDto(card.getUser()))")
+    public abstract CardDto toCardDto(Card card);
 
     @Mapping(target = "id", source = "cardDto.id")
     @Mapping(target = "name", source = "cardDto.name")
@@ -36,6 +42,6 @@ public interface CardMapper {
     @Mapping(target = "defense", source = "cardDto.defense")
     @Mapping(target = "attack", source = "cardDto.attack")
     @Mapping(target = "price", source = "cardDto.price")
-    @Mapping(target = "userId", expression = "java(null)")
-    Card toCard(CardDto cardDto);
+    @Mapping(target = "user", expression = "java(userMapper.toUser(cardDto.getUserDto()))")
+    public abstract Card toCard(CardDto cardDto);
 }

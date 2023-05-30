@@ -1,6 +1,6 @@
 package com.example.cardgameapplication.card_manager.service;
 
-import com.example.cardgameapplication.card_manager.dao.CardDao;
+import com.example.cardgameapplication.card_manager.dao.CardRepository;
 import com.example.cardgameapplication.card_manager.dto.CardDto;
 import com.example.cardgameapplication.card_manager.mapper.CardMapper;
 import com.example.cardgameapplication.card_manager.model.Card;
@@ -20,7 +20,7 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class CardService {
 
-    private final CardDao cardRepository;
+    private final CardRepository cardRepository;
     private final CardMapper cardMapper;
 
     public CardDto getCard(Integer cardId) {
@@ -58,6 +58,6 @@ public class CardService {
     }
 
     public List<CardDto> getCards() {
-        return StreamSupport.stream(cardRepository.findAll().spliterator(),false).map(cardMapper::toCardDto).collect(toList());//  stream().map(cardMapper::toCardDto).collect(toList());
+        return StreamSupport.stream(cardRepository.findAll().spliterator(),false).map(cardMapper::toCardDto).collect(toList());
     }
 }

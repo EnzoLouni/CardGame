@@ -2,7 +2,7 @@ package com.example.cardgameapplication.card_manager.controller;
 
 import com.example.cardgameapplication.card_manager.dto.CardDto;
 import com.example.cardgameapplication.card_manager.service.CardService;
-import com.example.cardgameapplication.card_manager.view.Views;
+import com.example.cardgameapplication.view.Views;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -12,29 +12,28 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/card")
 @RequiredArgsConstructor
 public class CardController {
 
     private final CardService cardService;
 
     @JsonView(Views.CardView.class)
-    @GetMapping("/{id}")
+    @GetMapping("/card/{id}")
     public CardDto getCard(@PathVariable("id") Integer id) {
         return cardService.getCard(id);
     }
 
-    @PutMapping("/{id}")
-    public void setCard(@PathVariable("id") Integer id, @RequestBody @Valid CardDto newCardDto) {
+    @PutMapping("/card/{id}")
+    public void updateCard(@PathVariable("id") Integer id, @RequestBody @Valid CardDto newCardDto) {
         cardService.updateCard(id, newCardDto);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/card/{id}")
     public void deleteCard(@PathVariable("id") Integer id) {
         cardService.deleteCard(id);
     }
 
-    @PostMapping
+    @PostMapping("/card")
     public void createCard(@RequestBody @Valid CardDto card)
     {
         cardService.createCard(card);
