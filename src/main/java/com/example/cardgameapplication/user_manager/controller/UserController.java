@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
-@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 public class UserController {
@@ -19,18 +17,18 @@ public class UserController {
     private final UserService userService;
 
     @JsonView(Views.UserView.class)
-    @GetMapping("/user/{id}")
-    public UserDto getUser(@PathVariable("id") Integer id) {
+    @GetMapping("/user")
+    public UserDto getUser(@RequestParam(name = "id") Integer id) {
         return userService.getUser(id);
     }
 
-    @PutMapping("/user/{id}")
-    public void updateUser(@PathVariable("id") Integer id, @RequestBody @Valid UserDto newUserDto) {
+    @PutMapping("/user")
+    public void updateUser(@RequestParam(name = "id") Integer id, @RequestBody @Valid UserDto newUserDto) {
         userService.updateUser(id, newUserDto);
     }
 
-    @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable("id") Integer id) {
+    @DeleteMapping("/user")
+    public void deleteUser(@RequestParam(name = "id") Integer id) {
         userService.deleteUser(id);
     }
 

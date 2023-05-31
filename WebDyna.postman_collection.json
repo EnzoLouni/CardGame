@@ -55,15 +55,20 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/card/1",
+							"raw": "http://localhost:8080/card?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
-								"1"
+								"card"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -84,15 +89,20 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/card/1",
+							"raw": "http://localhost:8080/card?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
-								"1"
+								"card"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -116,15 +126,20 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/card/1",
+							"raw": "http://localhost:8080/card?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
-								"1"
+								"card"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -148,14 +163,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/card/cards_to_sell",
+							"raw": "http://localhost:8080/cards_to_sell",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
 								"cards_to_sell"
 							]
 						}
@@ -240,15 +254,20 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/card/1",
+							"raw": "http://localhost:8080/user?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
-								"1"
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -269,7 +288,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/user/1",
+							"raw": "http://localhost:8080/user/1?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -278,6 +297,12 @@
 							"path": [
 								"user",
 								"1"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -301,15 +326,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/card/cards",
+							"raw": "http://localhost:8080/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
-								"cards"
+								"users"
 							]
 						}
 					},
@@ -345,20 +369,25 @@
 					"response": []
 				},
 				{
-					"name": "GET_CARD",
+					"name": "GET_USER",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/card/1",
+							"raw": "http://localhost:8080/user?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
-								"card",
-								"1"
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},

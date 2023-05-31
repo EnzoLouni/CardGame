@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
-@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 public class CardController {
@@ -18,18 +16,18 @@ public class CardController {
     private final CardService cardService;
 
     @JsonView(Views.CardView.class)
-    @GetMapping("/card/{id}")
-    public CardDto getCard(@PathVariable("id") Integer id) {
+    @GetMapping("/card")
+    public CardDto getCard(@RequestParam(name = "id") Integer id) {
         return cardService.getCard(id);
     }
 
-    @PutMapping("/card/{id}")
-    public void updateCard(@PathVariable("id") Integer id, @RequestBody @Valid CardDto newCardDto) {
+    @PutMapping("/card")
+    public void updateCard(@RequestParam(name = "id") Integer id, @RequestBody @Valid CardDto newCardDto) {
         cardService.updateCard(id, newCardDto);
     }
 
-    @DeleteMapping("/card/{id}")
-    public void deleteCard(@PathVariable("id") Integer id) {
+    @DeleteMapping("/card")
+    public void deleteCard(@RequestParam(name = "id") Integer id) {
         cardService.deleteCard(id);
     }
 
