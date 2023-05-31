@@ -18,11 +18,11 @@ public class UserDto {
     private Integer id;
     @JsonView(Views.UserView.class)
     private String login;
-    private String pwd;
+    private String password;
     @JsonView(Views.UserView.class)
-    private String firstName;
+    private String firstname;
     @JsonView(Views.UserView.class)
-    private String surName;
+    private String surname;
     @JsonView(Views.UserView.class)
     private String email;
     private List<CardDto> cardDtos;

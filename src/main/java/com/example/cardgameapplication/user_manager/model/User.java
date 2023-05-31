@@ -24,11 +24,11 @@ public class User {
     @NotNull
     private String login;
     @NotNull
-    private String pwd;
+    private String password;
     @NotNull
-    private String firstName;
+    private String firstname;
     @NotNull
-    private String surName;
+    private String surname;
     @NotNull
     private String email;
     @OneToMany(targetEntity = StoreTransaction.class, mappedBy = "user")

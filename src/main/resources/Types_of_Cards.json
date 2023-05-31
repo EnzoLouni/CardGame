@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Zozz enragé",
+    "description": "Cette carte représente un Zozzer enragé.",
+    "family": "Zozzer",
+    "affinity": "Terre",
+    "imgUrl": "img/zozz_enrage.png",
+    "smallImgUrl": "img/small/zozz_aenrage.png",
+    "energy": 50,
+    "hp": 200,
+    "defense": 45,
+    "attack": 5,
+    "price": 2
+  },
+  {
+    "name": "Zozz anti-germanique",
+    "description": "Le Zozz anti-germanique est un Zozz spécialisé dans la lutte contre les Zozzers de type germanique.",
+    "family": "Zozz",
+    "affinity": "Terre",
+    "imgUrl": "img/zozz_anti_germanique.png",
+    "smallImgUrl": "img/small/zozz_anti_germanique.png",
+    "energy": 2.5,
+    "hp": 90,
+    "defense": 80,
+    "attack": 70,
+    "price": 5.99
+  },
+  {
+    "name": "ZéoZolitique",
+    "description": "Le ZéoZolitique est un Zozz influencé par la géopolitique.",
+    "family": "Zozz",
+    "affinity": "Feu",
+    "imgUrl": "img/zeozolitique.png",
+    "smallImgUrl": "img/small/zeozolitique.png",
+    "energy": 3,
+    "hp": 70,
+    "defense": 60,
+    "attack": 80,
+    "price": 6.99
+  },
+  {
+    "name": "Zozzermanique",
+    "description": "Le Zozzermanique est un Zozzer de type germanique; puissant et agressif.",
+    "family": "Zozzer",
+    "affinity": "Eau",
+    "imgUrl": "img/zozzgermanique.png",
+    "smallImgUrl": "img/small/zozzgermanique.png",
+    "energy": 2.5,
+    "hp": 80,
+    "defense": 70,
+    "attack": 60,
+    "price": 5.99
+  },
+  {
+    "name": "Zozz chef de projet",
+    "description": "Le Zozz chef de projet est un Zozz spécialisé dans la gestion de projets complexes. Il a été commandité par le Zozz anti-germanique pour couler une dalle stratégique.",
+    "family": "Zozz",
+    "affinity": "Air",
+    "imgUrl": "img/zozz_chef_de_projet.png",
+    "smallImgUrl": "img/small/zozz_chef_de_projet.png",
+    "energy": 3.5,
+    "hp": 60,
+    "defense": 40,
+    "attack": 50,
+    "price": 7.99
+  }
+]

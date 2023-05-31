@@ -14,11 +14,11 @@ CREATE TABLE card (
     description	varchar(200),
     family	    varchar(20),
     affinity	varchar(30),
-    imgUrl	    varchar(200),
-    smallImgUrl	varchar(200),
+    img_url	    varchar(200),
+    small_img_url	varchar(200),
     energy	    float,
     hp	        float,
-    defence	    float,
+    defense	    float,
     attack	    float,
     price	    float,
     user_id     integer,
@@ -26,7 +26,7 @@ CREATE TABLE card (
     CONSTRAINT FK_USER FOREIGN KEY (user_id) REFERENCES "public".user(id)
 );
 
-INSERT INTO card (name, description, family, affinity, imgUrl, smallImgUrl, energy, hp, defence, attack, price)
+INSERT INTO card (name, description, family, affinity, img_url, small_img_url, energy, hp, defense, attack, price)
 VALUES
     ('Zozz enragé', 'Cette carte représente un Zozzer enragé.', 'Zozzer', 'Terre', 'img/zozz_enrage.png', 'img/small/zozz_aenrage.png', 1.5, 80, 70, 50, 2.99),
     ('Zozz anti-germanique', 'Le Zozz anti-germanique est un Zozz spécialisé dans la lutte contre les Zozzers de type germanique.', 'Zozz', 'Terre', 'img/zozz_anti_germanique.png', 'img/small/zozz_anti_germanique.png', 2.5, 90, 80, 70, 5.99),
@@ -52,7 +52,6 @@ CREATE TABLE store_transaction (
   id            serial,
   user_id       integer,
   card_id	    integer,
-  family	    varchar(20),
   action	    varchar(30),
   timestamp	    date,
   CONSTRAINT PK_STORE_TRANSACTION PRIMARY KEY (id),

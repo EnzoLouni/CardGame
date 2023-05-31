@@ -11,18 +11,18 @@ import static org.mapstruct.InjectionStrategy.FIELD;
 public interface UserMapper {
     @Mapping(target = "id", source = "user.id")
     @Mapping(target = "login", source = "user.login")
-    @Mapping(target = "pwd", source = "user.pwd")
-    @Mapping(target = "firstName", source = "user.firstName")
-    @Mapping(target = "surName", source = "user.surName")
+    @Mapping(target = "password", source = "user.password")
+    @Mapping(target = "firstname", source = "user.firstname")
+    @Mapping(target = "surname", source = "user.surname")
     @Mapping(target = "email", source = "user.email")
     @Mapping(target = "cardDtos", expression = "java(null)")
     UserDto toUserDto(User user);
 
     @Mapping(target = "id", source = "userDto.id")
     @Mapping(target = "login", source = "userDto.login")
-    @Mapping(target = "pwd", source = "userDto.pwd")
-    @Mapping(target = "firstName", source = "userDto.firstName")
-    @Mapping(target = "surName", source = "userDto.surName")
+    @Mapping(target = "password", source = "userDto.password")
+    @Mapping(target = "firstname", source = "userDto.firstname")
+    @Mapping(target = "surname", source = "userDto.surname")
     @Mapping(target = "email", source = "userDto.email")
     User toUser(UserDto userDto);
 }
